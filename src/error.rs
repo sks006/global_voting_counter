@@ -1,3 +1,5 @@
+use core::error;
+
 use solana_program::program_error::ProgramError;
 use thiserror::Error;
 
@@ -17,6 +19,12 @@ pub enum VotingError {
 
     #[error("Math Overflow: The counter has reached its limit")]
     Overflow,
+    #[error("missing required signature")]
+    MissingRequiredSignature,
+    #[error("proposal Expired")]
+    ProposalExpired,
+    #[error("no proposal Expired")]
+    ProposalNotExpired,
 }
 
 impl From<VotingError> for ProgramError {

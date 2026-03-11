@@ -11,12 +11,13 @@ pub const TAG_ADMIN_CONFIG: u8 = 2;
 
 #[derive(BorshSerialize, BorshDeserialize)]
 pub struct Counter {
-    pub tag: u8,   // Offset 0
+    // &[u8]
+    pub tag: u8,   // Offset 0 Counter, AdminConfig or LastVoter
     pub count: u64, // Offset 1
-     pub last_voter: Pubkey,
+    pub last_voter: Pubkey,//A Pubkey is exactly 32 bytes Offset 9
 }
 impl Counter {
-    pub const LEN: usize = 1 + 8+32;
+    pub const LEN: usize = 1 + 8+ 32;
 }
 
 #[derive(BorshSerialize, BorshDeserialize)]
